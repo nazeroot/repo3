@@ -20,11 +20,11 @@
             <el-button @click="search()" class="dalfBut">查询</el-button>
 <!--            新增弹框-->
             <el-dialog title="新增检查项" :visible.sync="dialogVisible">
-                <el-form :rules="myrules" :model="formData"  ref="dataAddForm" >
-                    <el-form-item label="编号" prop="code">
+                <el-form  :model="formData">
+                    <el-form-item label="编号">
                         <el-input v-model="formData.code" ></el-input>
                     </el-form-item>
-                    <el-form-item label="名称" prop="name">
+                    <el-form-item label="名称">
                         <el-input v-model="formData.name"></el-input>
                     </el-form-item>
                     <el-form-item label="性别">
@@ -102,13 +102,13 @@
                            total:100,//总记录数
                            queryString:null//
                        },
-                       dialogVisible:false,
-                       dialogFormVisible4Edit:false,//编辑检查项初始隐藏
-                       formData:{},//新增表单的model
                        myrules:{
                            code: [{ required: true, message: '项目编码为必填项', trigger: 'blur' }],
                            name: [{ required: true, message: '项目名称为必填项', trigger: 'blur' }]
-                       },//校验规则
+                       },
+                       dialogVisible:false,
+                       dialogFormVisible4Edit:false,//编辑检查项初始隐藏
+                       formData:{},//新增表单的model
                        tableData:[],//表格数据
                    },
                created(){

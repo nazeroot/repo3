@@ -6,6 +6,7 @@ import com.github.pagehelper.PageHelper;
 import com.itheima.dao.CheckItemDao;
 import com.itheima.entity.PageResult;
 import com.itheima.entity.QueryPageBean;
+import com.itheima.entity.Result;
 import com.itheima.pojo.CheckItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,7 +25,8 @@ public class CheckItemServiceImpl implements CheckItemService {
 
     @Override
     public PageResult findPage(QueryPageBean queryPageBean) {
-        Page page= PageHelper.startPage(queryPageBean.getCurrentPage(), queryPageBean.getPageSize());
+
+        Page page = PageHelper.startPage(queryPageBean.getCurrentPage(), queryPageBean.getPageSize());
         List<CheckItem> checkItems = checkItemDao.findPage(queryPageBean.getQueryString());
         return new PageResult(page.getTotal(),checkItems);
     }
@@ -42,5 +44,11 @@ public class CheckItemServiceImpl implements CheckItemService {
     @Override
     public void edit(CheckItem checkItem) {
         checkItemDao.edit(checkItem);
+    }
+
+    @Override
+    public Result findAll() {
+        List<CheckItem> checkItems=  checkItemDao.findAll();
+        return Result.success("",checkItems);
     }
 }

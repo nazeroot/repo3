@@ -33,6 +33,10 @@ public class CheckItemController {
                 return new Result(false, MessageConstant.ADD_CHECKGROUP_FAIL);
             }
         }
+    @RequestMapping("/findAll")
+    public  Result findAll(){
+         return    checkItemService.findAll();
+    }
         @RequestMapping("/findPage")
     public PageResult findPage(@RequestBody QueryPageBean queryPageBean){
             PageResult page = checkItemService.findPage(queryPageBean);

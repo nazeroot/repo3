@@ -22,4 +22,7 @@ public interface CheckItemDao {
     CheckItem findById(@Param("id") Integer id);
 
     void edit(CheckItem checkItem);
+
+
+    List<CheckItem> findAll();
 }

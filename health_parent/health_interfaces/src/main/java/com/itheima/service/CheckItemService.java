@@ -2,6 +2,7 @@ package com.itheima.service;
 
 import com.itheima.entity.PageResult;
 import com.itheima.entity.QueryPageBean;
+import com.itheima.entity.Result;
 import com.itheima.pojo.CheckItem;
 
 public interface CheckItemService {
@@ -15,4 +16,6 @@ public interface CheckItemService {
     CheckItem findById(Integer id);
 
     void edit(CheckItem checkItem);
+
+    Result findAll();
 }
