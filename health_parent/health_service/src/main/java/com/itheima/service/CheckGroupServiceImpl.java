@@ -7,6 +7,7 @@ import com.itheima.dao.CheckGroupDao;
 import com.itheima.dao.CheckItemDao;
 import com.itheima.entity.PageResult;
 import com.itheima.entity.QueryPageBean;
+import com.itheima.entity.Result;
 import com.itheima.pojo.CheckGroup;
 import com.itheima.pojo.CheckItem;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,6 +84,12 @@ public class CheckGroupServiceImpl implements CheckGroupService {
             params.add(map);
         }
         checkGroupDao.setCheckGroupAndCheckItem(params);*/
+    }
+
+    @Override
+    public Result findAll() {
+        List<CheckGroup> checkGroups = checkGroupDao.findAll();
+        return Result.success("",checkGroups);
     }
 
 

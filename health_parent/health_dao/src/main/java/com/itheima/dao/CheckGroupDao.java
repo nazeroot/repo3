@@ -22,4 +22,6 @@ public interface CheckGroupDao {
     Integer edit(CheckGroup checkGroup);
 
     Integer deleteRelationship(@Param("id") Integer id);
+
+    List<CheckGroup> findAll();
 }

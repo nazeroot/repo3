@@ -33,6 +33,9 @@ public class CheckGroupController {
 
     return checkGroupService.findPage(queryPageBean);
 }
+        @RequestMapping("/findAll")
+        public Result findAll(){
+        return checkGroupService.findAll();}
 
     @RequestMapping("/findById4Edit")
     public Result findById4Edit(Integer id){
