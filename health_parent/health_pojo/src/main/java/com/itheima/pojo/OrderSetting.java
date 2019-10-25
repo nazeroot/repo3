@@ -11,6 +11,16 @@ public class OrderSetting implements Serializable{
     private Date orderDate;//预约设置日期
     private int number;//可预约人数
     private int reservations ;//已预约人数
+    private int month;
+    private int date;
+
+    public int getDate() {
+        return date;
+    }
+
+    public void setDate(int date) {
+        this.date = date;
+    }
 
     public OrderSetting() {
     }
@@ -46,6 +56,14 @@ public class OrderSetting implements Serializable{
 
     public int getReservations() {
         return reservations;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
     }
 
     public void setReservations(int reservations) {

@@ -13,7 +13,7 @@
 						http://www.springframework.org/schema/context
 						http://www.springframework.org/schema/context/spring-context.xsd">
     <!--    应用名称-->
-    <dubbo:application name="health-web"></dubbo:application>
+    <dubbo:application name="health_web"></dubbo:application>
     <!--    注册中心-->
     <dubbo:registry address="zookeeper://127.0.0.1:2181"></dubbo:registry>
     <!--    包扫描-->
@@ -22,6 +22,24 @@
     <dubbo:consumer check="false" timeout="120000"></dubbo:consumer>
     <!--    mvc驱动-->
     <mvc:annotation-driven></mvc:annotation-driven>
+    <!--    mvc驱动-->
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+            <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+                <property name="supportedMediaTypes" value="application/json"/>
+                <property name="features">
+                    <list>
+                        <!--                        {flag:boolean,meassage:string,data:object}
+                         -->
+                        <!-- 是否输出值为null的字段,默认为false  -->
+                        <value>WriteMapNullValue</value>
+                        <!--  全局修改日期格式,默认为false  -->
+                        <value>WriteDateUseDateFormat</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
     <bean id="multipartResolver"
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="maxUploadSize" value="104857600" />

@@ -14,7 +14,8 @@
         <module>health_web</module>
         <module>health_pojo</module>
         <module>health_interfaces</module>
-        <module>health_jobs</module>
+        <module>health_mobile</module>
+        <!--        <module>health_jobs</module>-->
     </modules>
     <packaging>pom</packaging>
     <properties>
