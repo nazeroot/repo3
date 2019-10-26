@@ -34,7 +34,7 @@
             <div class="contentBox">
                 <div class="card">
                     <div class="">
-                        <img :src="'http://pqjroc654.bkt.clouddn.com/'+setmeal.img" width="100%" height="100%" />
+                        <img :src="'http://pzr7bacng.bkt.clouddn.com/'+setmeal.img" width="100%" height="100%" />
                     </div>
                     <div class="project-text">
                         <h4 class="tit">{{setmeal.name}}</h4>
@@ -75,8 +75,8 @@
                         </div>
                         <div class="input-row">
                             <label>手机号</label>
-                            <input v-model="orderInfo.telephone" type="text" class="input-clear" placeholder="请输入手机号">
-                            <input style="font-size: x-small;" id="validateCodeButton" @click="sendValidateCode()" type="button" value="发送验证码">
+                            <input v-model="orderInfo.phoneNumber" type="text" class="input-clear" placeholder="请输入手机号">
+                            <input style="font-size: x-small;" ref="validateCodeButton" @click="sendValidateCode()" type="button" value="发送验证码">
                         </div>
                         <div class="input-row">
                             <label>验证码</label>
@@ -112,15 +112,15 @@
                     //发送验证码
                     sendValidateCode(){
                         //获取用户输入的手机号
-                        var telephone = this.orderInfo.telephone;
+                        var phoneNumber = this.orderInfo.phoneNumber;
                         //校验手机号输入是否正确
-                        if (!checkTelephone(telephone)) {
+                        if (!checkTelephone(phoneNumber)) {
                             this.$message.error('请输入正确的手机号');
                             return false;
                         }
-                        validateCodeButton = $("#validateCodeButton")[0];
+                        validateCodeButton = this.$refs.validateCodeButton[0];
                         clock = window.setInterval(doLoop, 1000); //一秒执行一次
-                        axios.post("/validateCode/send4Order.do?telephone=" + telephone).then((response) => {
+                        axios.post("/validateCode/send4Order.do?phoneNumber=" + phoneNumber).then((response) => {
                             if(!response.data.flag){
                                 //验证码发送失败
                                 this.$message.error('验证码发送失败，请检查手机号输入是否正确');
@@ -129,6 +129,10 @@
                     },
                     //提交预约
                     submitOrder(){
+                        //统一前后端预约日期格式
+                        this.orderInfo.regTime = this.orderInfo.orderDate
+                        //将预约套餐号码一并传入
+                        this.orderInfo.setmeal_id = id
                         //校验身份证号格式
                         if(!checkIdCard(this.orderInfo.idCard)){
                             this.$message.error('身份证号码输入错误，请重新输入');

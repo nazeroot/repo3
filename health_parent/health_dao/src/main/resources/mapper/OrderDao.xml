@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.dao.OrderDao">
+    <insert id="addOrder" useGeneratedKeys="true" keyProperty="id">
+        insert into t_order (member_id,orderDate,orderType,orderStatus,setmeal_id)
+         values (#{memberId},#{orderDate},#{orderType},#{orderStatus},#{setmealId})
+    </insert>
+    <select id="selectOrderMessge" resultType="java.lang.Integer">
+        select count(*) from t_order where member_id = #{memberId} and orderDate = #{orderDate}
+        and setmeal_id = #{setmealId}
+    </select>
+</mapper>

@@ -18,6 +18,24 @@ public class Member implements Serializable{
     private String email;//邮箱
     private Date birthday;//出生日期
     private String remark;//备注
+    private String validateCode;//验证码
+    private String setmeal_id;//预约的套餐id
+
+    public String getSetmeal_id() {
+        return setmeal_id;
+    }
+
+    public void setSetmeal_id(String setmeal_id) {
+        this.setmeal_id = setmeal_id;
+    }
+
+    public String getValidateCode() {
+        return validateCode;
+    }
+
+    public void setValidateCode(String validateCode) {
+        this.validateCode = validateCode;
+    }
 
     public Integer getId() {
         return id;

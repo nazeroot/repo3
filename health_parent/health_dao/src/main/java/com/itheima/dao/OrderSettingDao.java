@@ -15,4 +15,8 @@ public interface OrderSettingDao {
     void add(OrderSetting orderSetting);
 
     List<OrderSetting> findOrderSettingsByMonth(@Param("start") String start, @Param("end") String end);
+
+    OrderSetting selectOrderSettiongTime(@Param("regTime") Date regTime);
+
+    void addOrderSettingNum(@Param("orderDate") Date regTime);
 }

@@ -5,6 +5,9 @@
     <insert id="add">
         insert into t_ordersetting(number,orderDate) values (#{number},#{orderDate})
     </insert>
+    <update id="addOrderSettingNum">
+        update t_ordersetting set reservations = reservations+1 where orderDate = #{orderDate}
+    </update>
     <update id="update">
         update t_ordersetting set number = #{number} where orderDate = #{orderDate}
     </update>
@@ -15,5 +18,8 @@
     </select>
     <select id="findOrderSettingsByMonth" resultType="com.itheima.pojo.OrderSetting">
         select * from t_ordersetting where orderDate between #{start} and #{end}
+    </select>
+    <select id="selectOrderSettiongTime" resultType="com.itheima.pojo.OrderSetting">
+        select * from t_ordersetting where orderDate = #{regTime}
     </select>
 </mapper>
