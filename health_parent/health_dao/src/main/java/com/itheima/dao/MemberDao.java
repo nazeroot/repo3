@@ -6,4 +6,6 @@ public interface MemberDao {
     Member selectMember(Member member);
 
     void addMember(Member member1);
+
+    void addLoginMember(Member member1);
 }

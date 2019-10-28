@@ -54,4 +54,9 @@ public class OrderServiceImpl implements OrderService {
     public void addOrderSettingNum(Date regTime) {
         orderSettingDao.addOrderSettingNum(regTime);
     }
+
+    @Override
+    public void addLoginMember(Member member1) {
+        memberDao.addLoginMember(member1);
+    }
 }

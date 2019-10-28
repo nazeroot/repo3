@@ -18,4 +18,6 @@ public interface OrderService {
     void addOrder(Order order);
 
     void addOrderSettingNum(Date regTime);
+
+    void addLoginMember(Member member1);
 }

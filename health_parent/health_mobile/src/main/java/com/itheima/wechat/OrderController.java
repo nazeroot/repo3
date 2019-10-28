@@ -74,9 +74,12 @@ public class OrderController {
                 orderService.addOrderSettingNum(regTime);
                 }
             }
+
             return Result.success("预约成功");
         }else {
             return Result.error("请输入用户信息");
         }
+
+
     }
 }

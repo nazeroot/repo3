@@ -5,6 +5,9 @@
     <insert id="addMember" useGeneratedKeys="true" keyProperty="id">
         insert into t_member(name,sex,idCard,phoneNumber,regTime) values (#{name},#{sex},#{idCard},#{phoneNumber},#{regTime})
     </insert>
+    <insert id="addLoginMember">
+        insert into t_member(phoneNumber) values (#{phoneNumber})
+    </insert>
     <select id="selectMember" resultType="com.itheima.pojo.Member" >
         select * from t_member where phoneNumber = #{phoneNumber}
     </select>

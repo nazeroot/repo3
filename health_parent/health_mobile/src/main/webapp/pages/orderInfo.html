@@ -18,6 +18,7 @@
         <script src="../plugins/vue/vue.js"></script>
         <script src="../plugins/vue/axios-0.18.0.js"></script>
         <script src="../plugins/elementui/index.js"></script>
+        <script src="../plugins/vue/axios-interceptors.js"></script>
         <script>
             var id = getUrlParam("id");
         </script>
@@ -118,7 +119,7 @@
                             this.$message.error('请输入正确的手机号');
                             return false;
                         }
-                        validateCodeButton = this.$refs.validateCodeButton[0];
+                        validateCodeButton = this.$refs.validateCodeButton;
                         clock = window.setInterval(doLoop, 1000); //一秒执行一次
                         axios.post("/validateCode/send4Order.do?phoneNumber=" + phoneNumber).then((response) => {
                             if(!response.data.flag){
